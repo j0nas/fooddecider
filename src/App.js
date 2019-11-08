@@ -1,9 +1,12 @@
 import React, {Fragment} from "react";
 import NavBar from "./components/NavBar";
+import ExternalApi from "./components/ExternalApi";
 
 const App = () => (
   <Fragment>
-    <NavBar/>
+    <NavBar />
+
+    <ExternalApi />
   </Fragment>
 );
 
