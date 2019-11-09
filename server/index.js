@@ -1,27 +1,15 @@
-const express = require("express");
-const jwt = require("express-jwt");
-const jwksRsa = require("jwks-rsa");
-const authConfig = require('../src/auth_config');
+const jsonServer = require('json-server');
+const checkJwt = require('./middlewares/checkJwt');
 
-const app = express();
+const app = jsonServer.create();
+app.use(jsonServer.defaults());
+app.use(jsonServer.bodyParser);
+app.use(checkJwt);
 
-const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
-  }),
-  audience: authConfig.audience,
-  issuer: `https://${authConfig.domain}/`,
-  algorithm: ["RS256"]
-});
+app.get('/api/external', (req, res) =>
+  res.send({ msg: 'Your Access Token was successfully validated!' }));
 
-app.get('/api/external', checkJwt, (req, res) => {
-  res.send({ msg: "Your Access Token was successfully validated!" });
-});
-
-// Start the app
+app.use(jsonServer.router('./server/db.json'));
 app.listen(
   3001,
   err => err ?

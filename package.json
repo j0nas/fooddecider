@@ -22,8 +22,7 @@
     "eject": "react-scripts eject",
     "server": "node server",
     "server:dev": "nodemon server",
-    "db:dev": "json-server --watch server/db.json --port 3002",
-    "dev": "npm-run-all --parallel client:dev server:dev db:dev"
+    "dev": "npm-run-all --parallel client:dev server:dev"
   },
   "eslintConfig": {
     "extends": "react-app"

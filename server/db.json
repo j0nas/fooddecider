@@ -1,4 +1,9 @@
 {
-  "restaurants": [],
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Fave restaurant"
+    }
+  ],
   "foods": []
 }
