@@ -1,9 +1,30 @@
 {
+  "companies": [
+    {
+      "id": 1,
+      "name": "Minus AS"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "companyId": 1,
+      "name": "Jonas Jensen"
+    }
+  ],
   "restaurants": [
     {
       "id": 1,
-      "name": "Fave restaurant"
+      "name": "Jaipur"
     }
   ],
-  "foods": []
+  "foods": [
+    {
+      "id": 1,
+      "restaurantId": 1,
+      "employeeId": 1,
+      "name": "Chana Masala",
+      "comments": "Spiciness: medium, Check for \"Vegan dish?\". Special instructions: \"Please don't make it spicy at all\""
+    }
+  ]
 }
