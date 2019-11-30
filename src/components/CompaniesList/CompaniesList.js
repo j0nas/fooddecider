@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from "@blueprintjs/core"
+import "./CompaniesList.css"
 
-const CompaniesList = ({ companies = [], onJoinClick }) =>
+export const CompaniesList = ({ companies = [], onJoinClick }) =>
   Array.isArray(companies) && companies.length ?
-    <ul>
+    <ul className="companiesList__container">
       {companies.map(company => (
         <li key={company.id}>
           {company.name}
@@ -13,5 +14,3 @@ const CompaniesList = ({ companies = [], onJoinClick }) =>
       ))}
     </ul>
     : null;
-
-export default CompaniesList;
