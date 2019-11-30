@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import CompaniesList from "./CompaniesList";
 // import { useAuth0 } from "../react-auth0-spa";
-import {createCompany, fetchCompanies} from "../apiClients/companies";
-import { joinCompany } from "../apiClients/employees";
-import {Button, ButtonGroup, FormGroup, InputGroup, Spinner, NonIdealState } from "@blueprintjs/core";
+import { fetchCompanies} from "../apiClients/companies";
+import {HARDCODED_CURRENT_USER_ID, joinCompany} from "../apiClients/employees";
+import {Button } from "@blueprintjs/core";
+import {CreateCompanyForm} from "./CreateCompanyForm/CreateCompanyForm";
 
 const style = {
   width: 300,
@@ -13,12 +14,8 @@ const style = {
 
 
 export const CompanyAssociationSelection = () => {
-  const HARDCODED_CURRENT_USER_ID = 1;
   const [companies, setCompanies] = useState([]);
-  const [showCreateForm, setCreateCompany] = useState(false);
-  const [companyName, setCompanyName] = useState('');
-  const [isCreatingCompany, setCreatingCompany] = useState(false);
-  const [error, setError] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(false);
   // const { isAuthenticated } = useAuth0();
   // if (!isAuthenticated) {
   //   return null;
@@ -30,16 +27,6 @@ export const CompanyAssociationSelection = () => {
     }
   }
 
-  async function onCreateCompanyClick() {
-    setCreatingCompany(true);
-    try {
-      await createCompany(companyName, HARDCODED_CURRENT_USER_ID);
-      setCreatingCompany(false);
-      setError(null);
-    } catch (error) {
-      setError(error.message)
-    }
-  }
 
   const onJoinClick = companyId => joinCompany(HARDCODED_CURRENT_USER_ID, companyId);
 
@@ -53,31 +40,12 @@ export const CompanyAssociationSelection = () => {
 
       <CompaniesList companies={companies} onJoinClick={onJoinClick}/>
 
-      <div style={{ marginTop: 20 }}>
+      <div style={{ margin: '20px 0' }}>
         <span style={{ marginRight: 5 }}>No matches?</span>
-        <Button icon="plus" onClick={() => setCreateCompany(true)} minimal>Create a new company</Button>
+        <Button icon="plus" onClick={() => setShowCreateForm(true)} minimal>Create a new company</Button>
       </div>
 
-      <br/>
-      {showCreateForm && (
-        <FormGroup helperText="Create a new company">
-          {error && <NonIdealState title="An error occurred" description={error} icon="error" />}
-
-          <InputGroup type="text" placeholder="Company name" value={companyName}
-                      onChange={e => setCompanyName(e.target.value)} disabled={isCreatingCompany} />
-          <ButtonGroup style={{ marginTop: 5 }}  fill>
-            <Button disabled={isCreatingCompany} type="secondary" icon="cross"
-                    onClick={() => setCreateCompany(false)}>
-              Cancel
-            </Button>
-            <Button disabled={isCreatingCompany} type="primary"
-                    icon={isCreatingCompany ? <Spinner size={Spinner.SIZE_SMALL} /> : 'floppy-disk'}
-                    onClick={onCreateCompanyClick}>
-              {isCreatingCompany ? 'Creating' : 'Create'}
-            </Button>
-          </ButtonGroup>
-        </FormGroup>
-      )}
+      <CreateCompanyForm show={showCreateForm} onCancelClick={() => setShowCreateForm(false)} />
     </div>
   );
 };

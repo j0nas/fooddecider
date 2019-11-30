@@ -1,3 +1,5 @@
+export const HARDCODED_CURRENT_USER_ID = 1;
+
 export const joinCompany = async (employeeId, companyId) => {
   const employeesUrl = `/employees/${employeeId}`;
   const initialStateResponse = await fetch(employeesUrl);
