@@ -8,7 +8,7 @@
   "employees": [
     {
       "id": 1,
-      "companyId": 1,
+      "companyId": null,
       "name": "Jonas Jensen"
     }
   ],
