@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CompaniesList from "./CompaniesList";
+import CompaniesList from "../components/CompaniesList";
 // import { useAuth0 } from "../react-auth0-spa";
 import { fetchCompanies} from "../apiClients/companies";
 import {HARDCODED_CURRENT_USER_ID, joinCompany} from "../apiClients/employees";
 import {Button } from "@blueprintjs/core";
-import {CreateCompanyForm} from "./CreateCompanyForm/CreateCompanyForm";
+import {CreateCompanyForm} from "../components/CreateCompanyForm/CreateCompanyForm";
 
 const style = {
   width: 300,
@@ -26,7 +26,6 @@ export const CompanyAssociationSelection = () => {
       fetchCompanies(setCompanies, console.log)
     }
   }
-
 
   const onJoinClick = companyId => joinCompany(HARDCODED_CURRENT_USER_ID, companyId);
 
