@@ -1,7 +1,7 @@
 import React from "react";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css"
 import NavBar from "./components/NavBar";
-import { CompanyAssociationSelection } from "./routes/CompanyAssociationSelection";
+import { CompanyAssociationSelection } from "./views/CompanyAssociationSelection";
 
 const App = () => (
   <div className="bp3-dark">
