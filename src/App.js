@@ -27,23 +27,23 @@ const App = () => {
   const onJoinClick = companyId => joinCompany(HARDCODED_CURRENT_USER_ID, companyId);
 
   const a = isAuthenticated || true ?
-    <div style={style}>
+    <div style={style} className="bp3-dark">
       <div className="bp3-input-group">
         <span className="bp3-icon bp3-icon-search" />
         <input className="bp3-input" type="search" placeholder="Search input"
-               dir="auto" onKeyPress={onKeyPress} />
+               dir="auto" autoFocus="autoFocus" onKeyPress={onKeyPress} />
       </div>
 
       <CompaniesList companies={companies} onJoinClick={onJoinClick} />
     </div> : null;
 
   return (
-    <Fragment>
+    <div className="bp3-dark">
       <NavBar/>
 
       {a}
 
-    </Fragment>
+    </div>
   );
 };
 
