@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useAuth0 } from "../react-auth0-spa";
 
 const ExternalApi = () => {
-  const [showResult, setShowResult] = useState(false);
   const [apiMessage, setApiMessage] = useState("");
   const { getTokenSilently, isAuthenticated } = useAuth0();
 
@@ -16,7 +15,6 @@ const ExternalApi = () => {
       });
       const responseData = await response.json();
 
-      setShowResult(true);
       setApiMessage(responseData);
     } catch (error) {
       console.error(error);
@@ -29,7 +27,7 @@ const ExternalApi = () => {
       <button onClick={callApi} disabled={!isAuthenticated}>
         {isAuthenticated ? 'Ping API' : 'Log in first'}
       </button>
-      {showResult && <code>{JSON.stringify(apiMessage, null, 2)}</code>}
+      {apiMessage && <code>{JSON.stringify(apiMessage, null, 2)}</code>}
     </>
   );
 };
