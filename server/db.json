@@ -8,14 +8,25 @@
   "employees": [
     {
       "id": 1,
-      "companyId": null,
-      "name": "Jonas Jensen"
+      "companyId": 1,
+      "name": "Jonas Jensen",
+      "restaurantId": [2]
+    },
+    {
+      "id": 2,
+      "companyId": 1,
+      "name": "Test Testesen",
+      "restaurantId": [1]
     }
   ],
   "restaurants": [
     {
       "id": 1,
       "name": "Jaipur"
+    },
+    {
+      "id": 2,
+      "name": "Tunco"
     }
   ],
   "foods": [
