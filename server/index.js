@@ -4,7 +4,7 @@ const checkJwt = require('./middlewares/checkJwt');
 const app = jsonServer.create();
 app.use(jsonServer.defaults());
 app.use(jsonServer.bodyParser);
-app.use(checkJwt);
+// app.use(checkJwt);
 
 app.get('/api/external', (req, res) =>
   res.send({ msg: 'Your Access Token was successfully validated!' }));
