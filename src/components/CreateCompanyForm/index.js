@@ -1,1 +1,1 @@
-export { CreateCompanyForm as default } from "./CreateCompanyForm"
+export { CreateCompanyForm as default } from './CreateCompanyForm';

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useAuth0 } from "../react-auth0-spa";
+import React, { useState } from 'react';
+import { useAuth0 } from '../react-auth0-spa';
 
 const ExternalApi = () => {
-  const [apiMessage, setApiMessage] = useState("");
+  const [apiMessage, setApiMessage] = useState('');
   const { getTokenSilently, isAuthenticated } = useAuth0();
 
   const callApi = async () => {
@@ -10,8 +10,8 @@ const ExternalApi = () => {
       const token = await getTokenSilently();
       const response = await fetch('/restaurants/1', {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       const responseData = await response.json();
 

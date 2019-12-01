@@ -1,15 +1,16 @@
-import React from "react";
-import { Navbar as Nav, Alignment } from "@blueprintjs/core"
-import Profile from "./Profile";
+import React from 'react';
+import { Navbar as Nav, Alignment } from '@blueprintjs/core';
+import Profile from './Profile';
 
-const NavBar = () =>
+const NavBar = () => (
   <Nav>
     <Nav.Group>
       <Nav.Heading>Fooddecider</Nav.Heading>
     </Nav.Group>
     <Nav.Group align={Alignment.RIGHT}>
-      <Profile/>
+      <Profile />
     </Nav.Group>
-  </Nav>;
+  </Nav>
+);
 
 export default NavBar;

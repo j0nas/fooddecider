@@ -1,5 +1,5 @@
-import React from "react";
-import {NonIdealState} from "@blueprintjs/core";
+import React from 'react';
+import { NonIdealState } from '@blueprintjs/core';
 
 export const Error = ({ description }) => {
   if (!description) {

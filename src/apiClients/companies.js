@@ -1,4 +1,4 @@
-import {joinCompany} from "./employees";
+import { joinCompany } from './employees';
 
 const endpoint = '/companies';
 
@@ -12,7 +12,7 @@ export function fetchCompanies(onSuccess, onError) {
 export const createCompany = async (companyName, employeeId) => {
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name: companyName }),
   });
   const createdCompany = await response.json();
@@ -22,5 +22,5 @@ export const createCompany = async (companyName, employeeId) => {
     return;
   }
 
-  await joinCompany(employeeId, createdCompany.id)
+  await joinCompany(employeeId, createdCompany.id);
 };
