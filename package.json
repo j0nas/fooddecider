@@ -10,6 +10,7 @@
     "express-jwt": "^5.3.1",
     "jwks-rsa": "^1.6.0",
     "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
