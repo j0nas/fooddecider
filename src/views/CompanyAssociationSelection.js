@@ -33,7 +33,7 @@ export const CompanyAssociationSelection = () => {
     <div style={style} className="bp3-dark">
       <div className="bp3-input-group">
         <span className="bp3-icon bp3-icon-search"/>
-        <input className="bp3-input" type="search" placeholder="Search input"
+        <input className="bp3-input" type="search" placeholder="Search companies"
                dir="auto" autoFocus="autoFocus" onKeyPress={onKeyPress}/>
       </div>
 

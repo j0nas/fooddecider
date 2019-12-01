@@ -27,20 +27,20 @@ export const CreateCompanyForm = ({ show, onCancelClick }) => {
 
   return (
     <FormGroup helperText="Create a new company">
-    <Error description={error} />
-    <InputGroup type="text" placeholder="Company name" value={companyName}
-                onChange={e => setCompanyName(e.target.value)} disabled={isCreatingCompany}/>
-    <ButtonGroup style={{marginTop: 5}} fill>
-      <Button disabled={isCreatingCompany} type="secondary" icon="cross" onClick={onCancelClick}>
-        Cancel
-      </Button>
-      <Button disabled={isCreatingCompany} type="primary"
-              icon={isCreatingCompany ? <Spinner size={Spinner.SIZE_SMALL}/> : 'floppy-disk'}
-              onClick={onCreateCompanyClick}>
-        {isCreatingCompany ? 'Creating' : 'Create'}
-      </Button>
-    </ButtonGroup>
-  </FormGroup>
+      <Error description={error} />
+      <InputGroup type="text" placeholder="Company name" value={companyName}
+                  onChange={e => setCompanyName(e.target.value)} disabled={isCreatingCompany}/>
+      <ButtonGroup style={{marginTop: 5}} fill>
+        <Button disabled={isCreatingCompany} type="secondary" icon="cross" onClick={onCancelClick}>
+          Cancel
+        </Button>
+        <Button disabled={isCreatingCompany} type="primary"
+                icon={isCreatingCompany ? <Spinner size={Spinner.SIZE_SMALL}/> : 'floppy-disk'}
+                onClick={onCreateCompanyClick}>
+          {isCreatingCompany ? 'Creating' : 'Create'}
+        </Button>
+      </ButtonGroup>
+    </FormGroup>
   );
 
 };
