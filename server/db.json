@@ -10,7 +10,7 @@
       "id": 1,
       "companyId": 1,
       "name": "Jonas Jensen",
-      "restaurants": []
+      "restaurants": [1]
     },
     {
       "id": 2,
