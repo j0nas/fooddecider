@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup, FormGroup, InputGroup, Spinner } from '@blueprintjs/core';
 import { createRestaurant } from '../../apiClients/restaurants';
-import { Error } from '../Error/Error';
+import Error from '../Error';
+import { HARDCODED_CURRENT_USER_ID } from '../../apiClients/employees';
 
 const CreateRestaurantForm = ({ show, onCancelClick }) => {
   const [name, setName] = useState('');
@@ -16,7 +17,7 @@ const CreateRestaurantForm = ({ show, onCancelClick }) => {
   async function onCreateCompanyClick() {
     setLoading(true);
     try {
-      await createRestaurant(name);
+      await createRestaurant(name, HARDCODED_CURRENT_USER_ID);
       setLoading(false);
       setError(null);
     } catch (error) {

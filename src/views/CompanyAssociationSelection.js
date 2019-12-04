@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import CompaniesList from '../components/CompaniesList';
+import { Button } from '@blueprintjs/core';
 // import { useAuth0 } from "../react-auth0-spa";
 import { fetchCompanies } from '../apiClients/companies';
 import { HARDCODED_CURRENT_USER_ID, joinCompany } from '../apiClients/employees';
-import { Button } from '@blueprintjs/core';
-import { CreateCompanyForm } from '../components/CreateCompanyForm/CreateCompanyForm';
+import CompaniesList from '../components/CompaniesList';
+import CreateCompanyForm from '../components/CreateCompanyForm/CreateCompanyForm';
 
 const style = {
   width: 300,

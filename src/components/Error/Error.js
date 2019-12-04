@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NonIdealState } from '@blueprintjs/core';
 
-export const Error = ({ description }) => {
+const Error = ({ description }) => {
   if (!description) {
     return null;
   }
@@ -12,3 +13,13 @@ export const Error = ({ description }) => {
     </span>
   );
 };
+
+Error.propTypes = {
+  description: PropTypes.string,
+};
+
+Error.defaultProps = {
+  description: null,
+};
+
+export default Error;

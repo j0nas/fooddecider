@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Button, ButtonGroup, FormGroup, InputGroup, Spinner } from '@blueprintjs/core';
 import { createCompany } from '../../apiClients/companies';
 import { HARDCODED_CURRENT_USER_ID } from '../../apiClients/employees';
-import { Error } from '../Error/Error';
+import Error from '../Error';
 
-export const CreateCompanyForm = ({ show, onCancelClick }) => {
+const CreateCompanyForm = ({ show, onCancelClick }) => {
   const [companyName, setCompanyName] = useState('');
   const [isCreatingCompany, setCreatingCompany] = useState(false);
   const [error, setError] = useState(false);
@@ -51,3 +52,10 @@ export const CreateCompanyForm = ({ show, onCancelClick }) => {
     </FormGroup>
   );
 };
+
+CreateCompanyForm.propTypes = {
+  show: PropTypes.bool.isRequired,
+  onCancelClick: PropTypes.func.isRequired,
+};
+
+export default CreateCompanyForm;

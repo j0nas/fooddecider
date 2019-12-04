@@ -1,4 +1,4 @@
-import { endpoint as employeesEndpoint } from './employees';
+import { addRestaurant, endpoint as employeesEndpoint } from './employees';
 
 export const endpoint = '/restaurants';
 
@@ -7,7 +7,7 @@ export const fetchRestaurants = () => fetch(endpoint).then(res => res.json());
 export const fetchRestaurantsForUser = userId =>
   fetch(`${employeesEndpoint}/${userId}${endpoint}`).then(res => res.json());
 
-export const createRestaurant = async name => {
+export const createRestaurant = async (name, userId) => {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -18,5 +18,5 @@ export const createRestaurant = async name => {
     console.log(`Failed creating company: [${createdRestaurant}]`);
   }
 
-  return createdRestaurant;
+  await addRestaurant(userId, createdRestaurant.id);
 };
