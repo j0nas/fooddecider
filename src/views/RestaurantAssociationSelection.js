@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchRestaurants, fetchRestaurantsForUser } from '../apiClients/restaurants';
 import { Button } from '@blueprintjs/core';
 import { HARDCODED_CURRENT_USER_ID } from '../apiClients/employees';
+import CreateRestaurantForm from '../components/CreateRestaurantForm';
 
 const style = {
   width: 300,
@@ -22,7 +23,7 @@ export const RestaurantAssociationSelection = () => {
     }
 
     getRestaurants();
-  }, [HARDCODED_CURRENT_USER_ID]);
+  }, []);
 
   // const { isAuthenticated } = useAuth0();
   // if (!isAuthenticated) {
@@ -38,8 +39,8 @@ export const RestaurantAssociationSelection = () => {
   return (
     <div style={style} className="bp3-dark">
       Your restaurants:
-      {userRestaurants.map(({ name, key }) => (
-        <li key={key}>{name}</li>
+      {userRestaurants.map(({ name }, index) => (
+        <li key={index}>{name}</li>
       ))}
       <div className="bp3-input-group">
         <span className="bp3-icon bp3-icon-search" />
@@ -52,8 +53,8 @@ export const RestaurantAssociationSelection = () => {
           onKeyPress={onKeyPress}
         />
       </div>
-      {restaurants.map(({ name, key }) => (
-        <li key={key}>{name}</li>
+      {restaurants.map(({ name }, index) => (
+        <li key={index}>{name}</li>
       ))}
       <div style={{ margin: '20px 0' }}>
         <span style={{ marginRight: 5 }}>No matches?</span>
@@ -61,6 +62,7 @@ export const RestaurantAssociationSelection = () => {
           Create new restaurant
         </Button>
       </div>
+      <CreateRestaurantForm show={showCreateForm} onCancelClick={() => setShowCreateForm(false)} />
     </div>
   );
 };
