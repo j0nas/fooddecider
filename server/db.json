@@ -10,7 +10,14 @@
       "id": 1,
       "companyId": 1,
       "name": "Jonas Jensen",
-      "restaurants": [1]
+      "restaurants": [1],
+      "dishes": [
+        {
+          "restaurantId": 1,
+          "name": "Chana Masala",
+          "comments": "Spiciness: medium, Check for \"Vegan dish?\". Special instructions: \"Please don't make it spicy at all\""
+        }
+      ]
     },
     {
       "id": 2,
@@ -27,15 +34,6 @@
     {
       "id": 2,
       "name": "Tunco"
-    }
-  ],
-  "foods": [
-    {
-      "id": 1,
-      "restaurantId": 1,
-      "employeeId": 1,
-      "name": "Chana Masala",
-      "comments": "Spiciness: medium, Check for \"Vegan dish?\". Special instructions: \"Please don't make it spicy at all\""
     }
   ]
 }
