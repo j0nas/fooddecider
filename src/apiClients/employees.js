@@ -1,6 +1,11 @@
 export const endpoint = '/employees';
 export const HARDCODED_CURRENT_USER_ID = 1;
 
+export const fetchUser = async id => {
+  const response = await fetch(`${endpoint}/${id}`);
+  return await response.json();
+};
+
 export const joinCompany = async (employeeId, companyId) => {
   const employeesUrl = `${endpoint}/${employeeId}`;
   const initialStateResponse = await fetch(employeesUrl);

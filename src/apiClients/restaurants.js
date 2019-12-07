@@ -1,4 +1,4 @@
-import { addRestaurant, endpoint as employeesEndpoint } from './employees';
+import { fetchUser, addRestaurant } from './employees';
 
 export const endpoint = '/restaurants';
 
@@ -13,8 +13,7 @@ export const fetchRestaurant = async id => {
 };
 
 export const fetchRestaurantsForUser = async userId => {
-  const response = await fetch(`${employeesEndpoint}/${userId}`);
-  const { restaurants } = await response.json();
+  const { restaurants } = await fetchUser(userId);
   return await Promise.all(restaurants.map(fetchRestaurant));
 };
 
