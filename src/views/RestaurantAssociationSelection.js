@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import { useAuth0 } from "../react-auth0-spa";
 import { fetchRestaurants, fetchRestaurantsForUser } from '../apiClients/restaurants';
 import { Button } from '@blueprintjs/core';
-import { HARDCODED_CURRENT_USER_ID } from '../apiClients/employees';
+import { fetchUser, HARDCODED_CURRENT_USER_ID } from '../apiClients/employees';
 import CreateRestaurantForm from '../components/CreateRestaurantForm';
 
 const style = {
@@ -14,15 +14,14 @@ const style = {
 export const RestaurantAssociationSelection = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [userRestaurants, setUserRestaurants] = useState([]);
 
   useEffect(() => {
-    async function getRestaurants() {
-      const userRestaurants = await fetchRestaurantsForUser(HARDCODED_CURRENT_USER_ID);
-      setUserRestaurants(userRestaurants);
-    }
-
-    getRestaurants();
+    (async () => {
+      setUserRestaurants(await fetchRestaurantsForUser(HARDCODED_CURRENT_USER_ID));
+      setCurrentUser(await fetchUser(HARDCODED_CURRENT_USER_ID));
+    })();
   }, []);
 
   // const { isAuthenticated } = useAuth0();
@@ -39,8 +38,19 @@ export const RestaurantAssociationSelection = () => {
   return (
     <div style={style} className="bp3-dark">
       Your restaurants:
-      {userRestaurants.map(({ name }, index) => (
-        <li key={index}>{name}</li>
+      {userRestaurants.map(({ id, name }, index) => (
+        <li key={index}>
+          {name}
+          <ul>
+            {currentUser?.dishes
+              .filter(dish => dish.restaurantId === id)
+              .map(dish => (
+                <li>
+                  {dish.name} ({dish.comments})
+                </li>
+              ))}
+          </ul>
+        </li>
       ))}
       <div className="bp3-input-group">
         <span className="bp3-icon bp3-icon-search" />
