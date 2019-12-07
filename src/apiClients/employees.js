@@ -6,19 +6,19 @@ export const fetchUser = async id => {
   return await response.json();
 };
 
-export const joinCompany = async (employeeId, companyId) => {
-  const employeesUrl = `${endpoint}/${employeeId}`;
-  const initialStateResponse = await fetch(employeesUrl);
-  const initialStateEmployee = await initialStateResponse.json();
-  const updatedEmployee = { ...initialStateEmployee, companyId };
-
-  const response = await fetch(employeesUrl, {
+export const updateUser = async (id, updatedUser) => {
+  const response = await fetch(`${endpoint}/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(updatedEmployee),
+    body: JSON.stringify(updatedUser),
   });
 
   return await response.json();
+};
+
+export const joinCompany = async (employeeId, companyId) => {
+  const initialStateEmployee = await fetchUser(employeeId);
+  return await updateUser(employeeId, { ...initialStateEmployee, companyId });
 };
 
 export const addRestaurant = async (employeeId, restaurantId) => {
