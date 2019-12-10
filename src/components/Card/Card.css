@@ -1,0 +1,11 @@
+.Card__container {
+  width: 300px;
+  margin: 5px;
+}
+
+.Card__container--centeredContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

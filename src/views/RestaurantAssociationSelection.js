@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 // import { useAuth0 } from "../react-auth0-spa";
 import { fetchRestaurants, fetchRestaurantsForUser } from '../apiClients/restaurants';
-import { Button } from '@blueprintjs/core';
+import { Button, Icon } from '@blueprintjs/core';
 import { fetchUser, HARDCODED_CURRENT_USER_ID } from '../apiClients/employees';
 import CreateRestaurantForm from '../components/CreateRestaurantForm';
 import RestaurantsList from '../components/RestaurantsList';
 import { getRestaurantDishes } from '../business/restaurants';
 import DishesList from '../components/DishesList';
+import Card from '../components/Card';
+import { IconNames } from '@blueprintjs/icons';
 
 const style = {
-  width: 300,
+  width: 700,
   margin: '0 auto',
   padding: 10,
 };
@@ -40,9 +42,18 @@ export const RestaurantAssociationSelection = () => {
 
   return (
     <div style={style} className="bp3-dark">
-      <RestaurantsList restaurants={userRestaurants}>
-        {({ id }) => <DishesList key={id} dishes={getRestaurantDishes(id, currentUser?.dishes)} />}
-      </RestaurantsList>
+      <div style={{ display: 'flex' }}>
+        <RestaurantsList restaurants={userRestaurants}>
+          {({ id }) => <DishesList key={id} dishes={getRestaurantDishes(id, currentUser?.dishes)} />}
+        </RestaurantsList>
+
+        <Card centeredContent interactive onClick={console.log}>
+          <Icon icon={IconNames.ADD} iconSize={48} />
+          <span className="AddButtonCard__addText" style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>
+            Add restaurant
+          </span>
+        </Card>
+      </div>
 
       <div className="bp3-input-group">
         <span className="bp3-icon bp3-icon-search" />

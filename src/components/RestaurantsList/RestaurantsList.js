@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from '@blueprintjs/core';
-import { Zoom } from 'react-reveal';
+import Card from '../Card';
 
-const RestaurantsList = ({ restaurants, children }) =>
+const RestaurantsList = ({ restaurants, children, ...otherProps }) =>
   restaurants.map(({ id, name, render }, index) => (
-    <Zoom key={id}>
-      <Card>
-        <h1>{name}</h1>
-        {children?.(restaurants[index])}
-      </Card>
-    </Zoom>
+    <Card key={id} {...otherProps}>
+      <h1>{name}</h1>
+      {children?.(restaurants[index])}
+    </Card>
   ));
 
 RestaurantsList.propTypes = {
