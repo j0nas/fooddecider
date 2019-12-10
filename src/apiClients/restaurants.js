@@ -4,6 +4,7 @@ export const endpoint = '/restaurants';
 
 export const fetchRestaurants = async () => {
   const response = fetch(endpoint);
+  console.log(response);
   return await response.json();
 };
 

@@ -15,7 +15,11 @@
         {
           "restaurantId": 1,
           "name": "Chana Masala",
-          "comments": "Spiciness: medium, Check for \"Vegan dish?\". Special instructions: \"Please don't make it spicy at all\""
+          "comments": [
+            "Spiciness: medium",
+            "Check for \"Vegan dish?\"",
+            "Special instructions: \"Please don't make it spicy at all\""
+          ]
         }
       ]
     },

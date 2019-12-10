@@ -4,6 +4,9 @@ import { fetchRestaurants, fetchRestaurantsForUser } from '../apiClients/restaur
 import { Button } from '@blueprintjs/core';
 import { fetchUser, HARDCODED_CURRENT_USER_ID } from '../apiClients/employees';
 import CreateRestaurantForm from '../components/CreateRestaurantForm';
+import RestaurantsList from '../components/RestaurantsList';
+import { getRestaurantDishes } from '../business/restaurants';
+import DishesList from '../components/DishesList';
 
 const style = {
   width: 300,
@@ -37,21 +40,10 @@ export const RestaurantAssociationSelection = () => {
 
   return (
     <div style={style} className="bp3-dark">
-      Your restaurants:
-      {userRestaurants.map(({ id, name }, index) => (
-        <li key={index}>
-          {name}
-          <ul>
-            {currentUser?.dishes
-              .filter(dish => dish.restaurantId === id)
-              .map(dish => (
-                <li>
-                  {dish.name} ({dish.comments})
-                </li>
-              ))}
-          </ul>
-        </li>
-      ))}
+      <RestaurantsList restaurants={userRestaurants}>
+        {({ id }) => <DishesList key={id} dishes={getRestaurantDishes(id, currentUser?.dishes)} />}
+      </RestaurantsList>
+
       <div className="bp3-input-group">
         <span className="bp3-icon bp3-icon-search" />
         <input
@@ -63,9 +55,8 @@ export const RestaurantAssociationSelection = () => {
           onKeyPress={onKeyPress}
         />
       </div>
-      {restaurants.map(({ name }, index) => (
-        <li key={index}>{name}</li>
-      ))}
+      <RestaurantsList restaurants={restaurants} />
+
       <div style={{ margin: '20px 0' }}>
         <span style={{ marginRight: 5 }}>No matches?</span>
         <Button icon="plus" onClick={() => setShowCreateForm(true)} minimal>
