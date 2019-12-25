@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar as Nav, Alignment } from '@blueprintjs/core';
-import Profile from './Profile';
+import Profile from '../Profile';
 
 const NavBar = () => (
   <Nav>
